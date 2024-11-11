@@ -2,8 +2,14 @@
   <div class="uniterm" [ngClass]="getUnitermClass()">
     <div class="uniterm__bracket"></div>
     <div class="uniterm__content">
-      <div>aaa</div>
-      <div>bbb</div>
+      <app-uniterm-content
+        [isVertical]="isVertical"
+        [value]="left"
+      ></app-uniterm-content>
+      <app-uniterm-content
+        [isVertical]="isVertical"
+        [value]="right"
+      ></app-uniterm-content>
     </div>
   </div>
 </div>
