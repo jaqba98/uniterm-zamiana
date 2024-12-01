@@ -1,1 +1,112 @@
-<div class="form"></div>
+<div class="form" [formGroup]="expressionForm">
+  <p>Wyrażenie oper.:</p>
+
+  <div>
+    <label for="a">Wyrażenie A: </label>
+    <input type="text" id="a" formControlName="expressionA" />
+    <div
+      *ngIf="
+        expressionForm.get('expressionA')?.touched &&
+        expressionForm.get('expressionA')?.invalid
+      "
+      class="error"
+    >
+      <small *ngIf="expressionForm.get('expressionA')?.hasError('required')"
+        >To pole jest wymagane.</small
+      >
+      <small *ngIf="expressionForm.get('expressionA')?.hasError('minlength')"
+        >Minimalna długość to 3 znaki.</small
+      >
+    </div>
+  </div>
+
+  <div>
+    <label for="b">Wyrażenie B: </label>
+    <input type="text" id="b" formControlName="expressionB" />
+    <div
+      *ngIf="
+        expressionForm.get('expressionB')?.touched &&
+        expressionForm.get('expressionB')?.invalid
+      "
+      class="error"
+    >
+      <small *ngIf="expressionForm.get('expressionB')?.hasError('required')"
+        >To pole jest wymagane.</small
+      >
+      <small *ngIf="expressionForm.get('expressionB')?.hasError('minlength')"
+        >Minimalna długość to 3 znaki.</small
+      >
+    </div>
+  </div>
+
+  <div>
+    <label for="sequence">Wyrażenie sekw.: </label>
+    <input type="text" id="sequence" formControlName="sequenceExpression" />
+    <div
+      *ngIf="
+        expressionForm.get('sequenceExpression')?.touched &&
+        expressionForm.get('sequenceExpression')?.invalid
+      "
+      class="error"
+    >
+      <small
+        *ngIf="expressionForm.get('sequenceExpression')?.hasError('required')"
+        >To pole jest wymagane.</small
+      >
+    </div>
+  </div>
+
+  <div>
+    <label>Operacja sekw.: </label>
+    <div>
+      <input type="radio" formControlName="sequenceOperation" value="comma" />
+      <label>,</label>
+    </div>
+    <div>
+      <input
+        type="radio"
+        formControlName="sequenceOperation"
+        value="semicolon"
+      />
+      <label>;</label>
+    </div>
+    <div
+      *ngIf="
+        expressionForm.get('sequenceOperation')?.touched &&
+        expressionForm.get('sequenceOperation')?.invalid
+      "
+      class="error"
+    >
+      <small
+        *ngIf="expressionForm.get('sequenceOperation')?.hasError('required')"
+        >Wybór operacji jest wymagany.</small
+      >
+    </div>
+  </div>
+
+  <div>
+    <label>Zamiana: </label>
+    <div>
+      <input type="radio" formControlName="swapDirection" value="left" />
+      <label>Lewy</label>
+    </div>
+    <div>
+      <input type="radio" formControlName="swapDirection" value="right" />
+      <label>Prawy</label>
+    </div>
+    <div
+      *ngIf="
+        expressionForm.get('swapDirection')?.touched &&
+        expressionForm.get('swapDirection')?.invalid
+      "
+      class="error"
+    >
+      <small *ngIf="expressionForm.get('swapDirection')?.hasError('required')"
+        >Wybór kierunku zamiany jest wymagany.</small
+      >
+    </div>
+  </div>
+
+  <button (click)="show()">Pokaż</button>
+  <button (click)="saveToDatabase()">Zapisz do bazy</button>
+</div>
