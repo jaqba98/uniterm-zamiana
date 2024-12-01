@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { UnitermComponent } from './uniterm/uniterm.component';
+
+import { FormComponent } from './form/form.component';
+import { PlaygroundComponent } from './playground/playground.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [UnitermComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  imports: [FormComponent, PlaygroundComponent],
 })
 export class AppComponent {}
