@@ -11,12 +11,6 @@ import { Component, Input } from '@angular/core';
 export class UnitermContentComponent {
   @Input() isVertical = true;
 
-  @Input() value = '';
-
-  getChars() {
-    return this.value.split('');
-  }
-
   getUnitermClass() {
     return this.isVertical ? 'uniterm--vertical' : 'uniterm--horizontal';
   }

@@ -19,4 +19,8 @@ export class UnitermComponent {
   getUnitermClass() {
     return this.isVertical ? 'uniterm--vertical' : 'uniterm--horizontal';
   }
+
+  getUnitermClassI() {
+    return this.isVertical ? 'uniterm--vertical-i' : 'uniterm--horizontal-i';
+  }
 }

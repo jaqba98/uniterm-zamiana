@@ -1,15 +1,13 @@
 <div class="uniterm__wrapper">
   <div class="uniterm" [ngClass]="getUnitermClass()">
     <div class="uniterm__bracket"></div>
-    <div class="uniterm__content">
-      <app-uniterm-content
-        [isVertical]="isVertical"
-        [value]="left"
-      ></app-uniterm-content>
-      <app-uniterm-content
-        [isVertical]="isVertical"
-        [value]="right"
-      ></app-uniterm-content>
+    <div class="uniterm__content" [ngClass]="getUnitermClassI()">
+      <app-uniterm-content>
+        <ng-content select="[left]"></ng-content>
+      </app-uniterm-content>
+      <app-uniterm-content>
+        <ng-content select="[right]"></ng-content>
+      </app-uniterm-content>
     </div>
   </div>
 </div>

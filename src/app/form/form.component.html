@@ -3,12 +3,24 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div>
         <label for="wyrazenieA">Wyrażenie A:</label>
-        <input id="wyrazenieA" formControlName="wyrazenieA" type="text" />
+        <input
+          id="wyrazenieA"
+          formControlName="wyrazenieA"
+          type="text"
+          [(ngModel)]="a"
+          (input)="onInput()"
+        />
       </div>
 
       <div>
         <label for="wyrazenieB">Wyrażenie B:</label>
-        <input id="wyrazenieB" formControlName="wyrazenieB" type="text" />
+        <input
+          id="wyrazenieB"
+          formControlName="wyrazenieB"
+          type="text"
+          [(ngModel)]="b"
+          (input)="onInput()"
+        />
       </div>
 
       <div>

@@ -4,6 +4,18 @@
 
 .playground {
   grid-area: playground;
-  border: 5px solid orange;
-  overflow: hidden;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  position: relative;
+
+  &__tip {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+  }
 }

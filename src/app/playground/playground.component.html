@@ -1,3 +1,18 @@
 <div class="playground">
-  <p>playground works!</p>
+  <div class="playground__tip">
+    <app-uniterm [isVertical]="true">
+      <p left>{{ a }}</p>
+    </app-uniterm>
+    <app-uniterm [isVertical]="false">
+      <p left>{{ b }}</p>
+    </app-uniterm>
+  </div>
+  <div class="playground__content">
+    <app-uniterm [isVertical]="true">
+      <p left>{{ a }}</p>
+      <app-uniterm right [isVertical]="false">
+        <p left>{{ b }}</p>
+      </app-uniterm>
+    </app-uniterm>
+  </div>
 </div>

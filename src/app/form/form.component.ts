@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { TipService } from '../service/tip.service';
 
 @Component({
   selector: 'app-form',
@@ -11,7 +12,11 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 export class FormComponent {
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  a: string = '';
+
+  b: string = '';
+
+  constructor(private fb: FormBuilder, private tipSrv: TipService) {
     this.form = this.fb.group({
       wyrazenieA: [''],
       wyrazenieB: [''],
@@ -20,6 +25,12 @@ export class FormComponent {
       zamiana: ['lewy'],
       fontSize: ['40'],
     });
+  }
+
+  onInput() {
+    const newA = this.a === '' ? 'default a' : this.a;
+    const newB = this.b === '' ? 'default b' : this.b;
+    this.tipSrv.setTip({ a: newA, b: newB });
   }
 
   onSubmit() {
