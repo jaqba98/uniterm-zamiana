@@ -1,6 +1,8 @@
-// .main {
-//   display: flex;
-//   min-width: 960px;
-//   height: 100svh;
-//   min-height: 720px;
-// }
+.main {
+  display: grid;
+  grid-template-areas:
+    "nav nav nav nav nav"
+    "form playground playground playground database";
+  grid-template-rows: 75px auto;
+  min-height: 100svh;
+}
