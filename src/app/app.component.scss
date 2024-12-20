@@ -1,8 +1,9 @@
 .main {
   display: grid;
   grid-template-areas:
-    "nav nav nav nav nav"
-    "form playground playground playground database";
+    "nav nav nav"
+    "form playground database";
+  grid-template-columns: 20% 3fr 10%;
   grid-template-rows: 75px auto;
   min-height: 100svh;
 }
