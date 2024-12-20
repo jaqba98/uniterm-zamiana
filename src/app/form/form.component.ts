@@ -1,47 +1,32 @@
-// import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-// import {
-//   FormGroup,
-//   FormBuilder,
-//   Validators,
-//   ReactiveFormsModule,
-// } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  // imports: [CommonModule, ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',
 })
-export class FormComponent implements OnInit {
-  // expressionForm: FormGroup;
+export class FormComponent {
+  form: FormGroup;
 
-  // constructor(private fb: FormBuilder) {
-  //   this.expressionForm = this.fb.group({
-  //     expressionA: ['', [Validators.required, Validators.minLength(3)]],
-  //     expressionB: ['', [Validators.required, Validators.minLength(3)]],
-  //     sequenceExpression: ['', Validators.required],
-  //     sequenceOperation: ['comma', Validators.required],
-  //     swapDirection: ['left', Validators.required],
-  //   });
-  // }
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      wyrazenieA: [''],
+      wyrazenieB: [''],
+      wyrazenieSekw: [''],
+      operacjaSekw: ['kropka'],
+      zamiana: ['lewy'],
+      fontSize: ['40'],
+    });
+  }
 
-  ngOnInit(): void {}
+  onSubmit() {
+    console.log('Dane formularza:', this.form.value);
+  }
 
-  // show(): void {
-  //   if (this.expressionForm.valid) {
-  //     console.log('Form values:', this.expressionForm.value);
-  //   } else {
-  //     console.error('Form is invalid');
-  //   }
-  // }
-
-  // saveToDatabase(): void {
-  //   if (this.expressionForm.valid) {
-  //     console.log('Saving to database:', this.expressionForm.value);
-  //   } else {
-  //     console.error('Cannot save. Form is invalid.');
-  //   }
-  // }
+  zapiszDoBazy() {
+    console.log('Zapis do bazy:', this.form.value);
+  }
 }
