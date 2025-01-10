@@ -7,7 +7,6 @@ export class FormStoreService {
   private form = new BehaviorSubject<FormModel>({
     expressionA: 'default a',
     expressionB: 'default b',
-    expressionSekw: '',
     operationSequence: '.',
     change: 'up',
     fontSize: '40',
