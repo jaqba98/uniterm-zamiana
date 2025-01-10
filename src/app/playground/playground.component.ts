@@ -3,11 +3,13 @@ import { Subscription } from 'rxjs';
 
 import { UnitermComponent } from './uniterm/uniterm.component';
 import { TipService } from '../service/tip.service';
+import { FormStoreService } from '../service/form-store.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-playground',
   standalone: true,
-  imports: [UnitermComponent],
+  imports: [UnitermComponent, CommonModule],
   templateUrl: './playground.component.html',
   styleUrl: './playground.component.scss',
 })
@@ -16,16 +18,40 @@ export class PlaygroundComponent implements OnDestroy {
 
   b: string = '';
 
-  sub: Subscription;
+  sub: Subscription[] = [];
 
-  constructor(private readonly tipSrv: TipService) {
-    this.sub = this.tipSrv.getTipObservable().subscribe((res) => {
-      this.a = res.a;
-      this.b = res.b;
-    });
+  expressionA!: string;
+
+  expressionB!: string;
+
+  operationSequence!: string;
+
+  change!: string;
+
+  fontSize!: string;
+
+  constructor(
+    private readonly tipSrv: TipService,
+    private store: FormStoreService
+  ) {
+    this.sub.push(
+      this.tipSrv.getTipObservable().subscribe((res) => {
+        this.a = res.a;
+        this.b = res.b;
+      })
+    );
+    this.sub.push(
+      this.store.getFormObservable().subscribe((store) => {
+        this.expressionA = store.expressionA;
+        this.expressionB = store.expressionB;
+        this.operationSequence = store.operationSequence;
+        this.change = store.change;
+        this.fontSize = `${store.fontSize}px`;
+      })
+    );
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    this.sub.forEach((i) => i.unsubscribe());
   }
 }

@@ -9,9 +9,18 @@
   </div>
   <div class="playground__content">
     <app-uniterm [isVertical]="true">
-      <p left>{{ a }}</p>
-      <app-uniterm right [isVertical]="false">
-        <p left>{{ b }}</p>
+      <p left *ngIf="change === 'down'" [ngStyle]="{ fontSize: fontSize }">
+        {{ expressionA }}
+      </p>
+      <app-uniterm left [isVertical]="false" *ngIf="change === 'up'">
+        <p left [ngStyle]="{ fontSize: fontSize }">{{ expressionB }}</p>
+      </app-uniterm>
+      <p center [ngStyle]="{ fontSize: fontSize }">{{ operationSequence }}</p>
+      <p right *ngIf="change === 'up'" [ngStyle]="{ fontSize: fontSize }">
+        {{ expressionA }}
+      </p>
+      <app-uniterm right [isVertical]="false" *ngIf="change === 'down'">
+        <p left [ngStyle]="{ fontSize: fontSize }">{{ expressionB }}</p>
       </app-uniterm>
     </app-uniterm>
   </div>

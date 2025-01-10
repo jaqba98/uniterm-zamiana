@@ -2,10 +2,10 @@
   <div class="form">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div>
-        <label for="wyrazenieA">Wyrażenie A:</label>
+        <label for="expressionA">Wyrażenie A:</label>
         <input
-          id="wyrazenieA"
-          formControlName="wyrazenieA"
+          id="expressionA"
+          formControlName="expressionA"
           type="text"
           [(ngModel)]="a"
           (input)="onInput()"
@@ -13,10 +13,10 @@
       </div>
 
       <div>
-        <label for="wyrazenieB">Wyrażenie B:</label>
+        <label for="expressionB">Wyrażenie B:</label>
         <input
-          id="wyrazenieB"
-          formControlName="wyrazenieB"
+          id="expressionB"
+          formControlName="expressionB"
           type="text"
           [(ngModel)]="b"
           (input)="onInput()"
@@ -24,23 +24,14 @@
       </div>
 
       <div>
-        <label for="wyrazenieSekw">Wyrażenie sekw.:</label>
-        <input id="wyrazenieSekw" formControlName="wyrazenieSekw" type="text" />
-      </div>
-
-      <div>
         <label>Operacja sekw.:</label>
         <div>
           <label>
-            <input formControlName="operacjaSekw" type="radio" value="kropka" />
+            <input formControlName="operationSequence" type="radio" value="." />
             .
           </label>
           <label>
-            <input
-              formControlName="operacjaSekw"
-              type="radio"
-              value="średnik"
-            />
+            <input formControlName="operationSequence" type="radio" value=";" />
             ;
           </label>
         </div>
@@ -50,10 +41,10 @@
         <label>Zmiana:</label>
         <div>
           <label>
-            <input formControlName="zamiana" type="radio" value="lewy" /> Lewy
+            <input formControlName="change" type="radio" value="up" /> Góra
           </label>
           <label>
-            <input formControlName="zamiana" type="radio" value="prawy" /> Prawy
+            <input formControlName="change" type="radio" value="down" /> Dół
           </label>
         </div>
       </div>
