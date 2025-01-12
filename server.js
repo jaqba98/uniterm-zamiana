@@ -47,7 +47,7 @@ app.post("/uniterms", (req, res) => {
   const query = `INSERT INTO uniterms (expressionA, expressionB, operationSequence, changeDescription, fontSize) VALUES (?, ?, ?, ?, ?)`;
   db.query(
     query,
-    [expressionA, expressionB, operationSequence, change, fontSize],
+    [expressionA, expressionB, operationSequence, changeDescription, fontSize],
     (err, result) => {
       if (err) {
         console.error("Błąd podczas dodawania rekordu:", err);
