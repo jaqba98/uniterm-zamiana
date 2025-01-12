@@ -26,14 +26,19 @@ db.connect((err) => {
 });
 
 app.post("/uniterms", (req, res) => {
-  const { expressionA, expressionB, operationSequence, change, fontSize } =
-    req.body;
+  const {
+    expressionA,
+    expressionB,
+    operationSequence,
+    changeDescription,
+    fontSize,
+  } = req.body;
 
   if (
     !expressionA ||
     !expressionB ||
     !operationSequence ||
-    !change ||
+    !changeDescription ||
     !fontSize
   ) {
     return res.status(400).json({ message: "Brak wymaganych pól." });
