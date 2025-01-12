@@ -31,7 +31,7 @@ export class FormComponent {
       expressionA: [''],
       expressionB: [''],
       operationSequence: ['.'],
-      change: ['up'],
+      changeDescription: ['up'],
       fontSize: ['40'],
     });
   }
