@@ -42,10 +42,12 @@ export class PlaygroundComponent implements OnDestroy {
     );
     this.sub.push(
       this.store.getFormObservable().subscribe((store) => {
+        console.log(store);
+
         this.expressionA = store.expressionA;
         this.expressionB = store.expressionB;
         this.operationSequence = store.operationSequence;
-        this.change = store.change;
+        this.change = store.changeDescription;
         this.fontSize = `${store.fontSize}px`;
       })
     );

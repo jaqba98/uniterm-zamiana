@@ -2,7 +2,90 @@
   display: contents;
 }
 
-.database {
+.database-wrapper {
   grid-area: database;
-  overflow: hidden;
+  overflow: auto;
+}
+
+.database {
+  min-width: 200px;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: auto;
+  height: 100svh;
+}
+
+.database h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 18px;
+}
+
+.uniterm-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.uniterm-card p {
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+.uniterm-card p strong {
+  color: #333;
+}
+
+.uniterm-card button {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.uniterm-card button {
+  background-color: #007bff;
+  color: white;
+}
+
+.uniterm-card button:hover {
+  background-color: #0056b3;
+}
+
+.load-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.load-button:hover {
+  background-color: #218838;
+}
+
+@media (max-width: 600px) {
+  .database {
+    padding: 15px;
+  }
+
+  .uniterm-card button,
+  .load-button {
+    width: 100%;
+  }
 }

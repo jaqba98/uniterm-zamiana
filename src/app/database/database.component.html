@@ -1,3 +1,16 @@
 <div class="database">
-  <p>database works!</p>
+  <h2>Lista Unitermów</h2>
+  <button class="load-button" (click)="loadUniterms()">Załaduj Unitermy</button>
+  <div *ngFor="let uniterm of uniterms" class="uniterm-card">
+    <div class="uniterm-details">
+      <p><strong>Expression A:</strong> {{ uniterm.expressionA }}</p>
+      <p><strong>Expression B:</strong> {{ uniterm.expressionB }}</p>
+      <p>
+        <strong>Operation Sequence:</strong> {{ uniterm.operationSequence }}
+      </p>
+      <p><strong>Change:</strong> {{ uniterm.changeDescription }}</p>
+      <p><strong>Font Size:</strong> {{ uniterm.fontSize }}</p>
+    </div>
+    <button (click)="selectUniterm(uniterm)">Wybierz</button>
+  </div>
 </div>

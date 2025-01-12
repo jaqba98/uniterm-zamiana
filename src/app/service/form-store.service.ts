@@ -8,7 +8,7 @@ export class FormStoreService {
     expressionA: 'default a',
     expressionB: 'default b',
     operationSequence: '.',
-    change: 'up',
+    changeDescription: 'up',
     fontSize: '40',
   });
 

@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { TipService } from '../service/tip.service';
 import { FormStoreService } from '../service/form-store.service';
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, HttpClientModule],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',
 })
@@ -17,10 +19,13 @@ export class FormComponent {
 
   b: string = '';
 
+  private apiUrl = 'http://localhost:3333/uniterms';
+
   constructor(
     private fb: FormBuilder,
     private tipSrv: TipService,
-    private store: FormStoreService
+    private store: FormStoreService,
+    private http: HttpClient
   ) {
     this.form = this.fb.group({
       expressionA: [''],
@@ -46,6 +51,19 @@ export class FormComponent {
   }
 
   zapiszDoBazy() {
-    console.log('Zapis do bazy:', this.form.value);
+    const formData = this.form.value;
+
+    this.saveToDatabase(formData).subscribe({
+      next: (response) => {
+        console.log('Dane zapisane pomyślnie:', response);
+      },
+      error: (err) => {
+        console.error('Błąd podczas zapisu do bazy:', err);
+      },
+    });
+  }
+
+  private saveToDatabase(data: any): Observable<any> {
+    return this.http.post(this.apiUrl, data);
   }
 }
