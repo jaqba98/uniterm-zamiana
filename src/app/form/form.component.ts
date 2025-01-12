@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { TipService } from '../service/tip.service';
 import { FormStoreService } from '../service/form-store.service';
 
@@ -12,12 +12,14 @@ import { FormStoreService } from '../service/form-store.service';
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',
 })
-export class FormComponent {
+export class FormComponent implements OnDestroy {
   form: FormGroup;
 
   a: string = '';
 
   b: string = '';
+
+  sub: Subscription[] = [];
 
   private apiUrl = 'http://localhost:3333/uniterms';
 
@@ -34,6 +36,19 @@ export class FormComponent {
       changeDescription: ['up'],
       fontSize: ['40'],
     });
+    this.sub.push(
+      this.store.getFormObservable().subscribe((store) => {
+        this.form.patchValue({
+          expressionA: store.expressionA || '',
+          expressionB: store.expressionB || '',
+          operationSequence: store.operationSequence || '.',
+          changeDescription: store.changeDescription || 'up',
+          fontSize: store.fontSize || '40',
+        });
+        this.a = store.expressionA || '';
+        this.b = store.expressionB || '';
+      })
+    );
   }
 
   onInput() {
@@ -61,6 +76,10 @@ export class FormComponent {
         console.error('Błąd podczas zapisu do bazy:', err);
       },
     });
+  }
+
+  ngOnDestroy() {
+    this.sub.forEach((i) => i.unsubscribe());
   }
 
   private saveToDatabase(data: any): Observable<any> {

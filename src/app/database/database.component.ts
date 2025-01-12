@@ -23,11 +23,9 @@ export class DatabaseComponent implements OnInit {
   }
 
   loadUniterms(): void {
-    console.log('Ładowanie unitermów...');
     this.http.get<any[]>(this.apiUrl).subscribe({
       next: (data) => {
         this.uniterms = data;
-        console.log('Załadowano unitermy:', data);
       },
       error: (err) => {
         console.error('Błąd podczas ładowania unitermów:', err);
