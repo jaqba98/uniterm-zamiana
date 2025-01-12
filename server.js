@@ -1,17 +1,15 @@
 const express = require("express");
 const mysql = require("mysql2");
 const bodyParser = require("body-parser");
-const cors = require("cors"); // Import CORS
+const cors = require("cors");
 
 const app = express();
 const port = 3333;
 
 app.use(bodyParser.json());
 
-// Dodaj middleware CORS
 app.use(cors());
 
-// Konfiguracja bazy danych
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -27,7 +25,6 @@ db.connect((err) => {
   console.log("Połączono z bazą danych.");
 });
 
-// Endpoint do dodawania rekordów
 app.post("/uniterms", (req, res) => {
   const { expressionA, expressionB, operationSequence, change, fontSize } =
     req.body;
@@ -58,7 +55,6 @@ app.post("/uniterms", (req, res) => {
   );
 });
 
-// Endpoint do pobierania rekordów
 app.get("/uniterms", (req, res) => {
   const query = "SELECT * FROM uniterms";
   db.query(query, (err, results) => {
@@ -70,7 +66,6 @@ app.get("/uniterms", (req, res) => {
   });
 });
 
-// Start serwera
 app.listen(port, () => {
   console.log(`Serwer działa na http://localhost:${port}`);
 });

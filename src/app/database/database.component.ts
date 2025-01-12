@@ -11,19 +11,17 @@ import { FormStoreService } from '../service/form-store.service';
   styleUrl: './database.component.scss',
 })
 export class DatabaseComponent implements OnInit {
-  uniterms: any[] = []; // Tablica przechowująca unitermy
-  selectedUniterm: any = null; // Wybrany uniterm
+  uniterms: any[] = [];
+  selectedUniterm: any = null;
 
-  private apiUrl = 'http://localhost:3333/uniterms'; // URL backendu
+  private apiUrl = 'http://localhost:3333/uniterms';
 
   constructor(private http: HttpClient, private store: FormStoreService) {}
 
   ngOnInit(): void {
-    // Możesz wywołać loadUniterms() tutaj lub z przycisku
     this.loadUniterms();
   }
 
-  // Pobierz dane z bazy danych
   loadUniterms(): void {
     console.log('Ładowanie unitermów...');
     this.http.get<any[]>(this.apiUrl).subscribe({
@@ -37,10 +35,8 @@ export class DatabaseComponent implements OnInit {
     });
   }
 
-  // Wybierz uniterm i wykonaj dalszą logikę
   selectUniterm(uniterm: any): void {
     this.selectedUniterm = uniterm;
     this.store.setForm(uniterm);
-    // Możesz tutaj wykonać dowolną akcję z wybranym unitermem
   }
 }

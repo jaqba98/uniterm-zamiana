@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TipService } from '../service/tip.service';
 import { FormStoreService } from '../service/form-store.service';
@@ -8,7 +8,7 @@ import { FormStoreService } from '../service/form-store.service';
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',
 })
